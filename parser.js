@@ -1,7 +1,19 @@
+/**
+ * To run: node parser.js --d [attendees | reprocess] [--f filename]
+ * Arguments: --d [Directory]: Directory to read files from
+              --f [Filename]: Name of CSV to output. If not defined, defaults to
+                              name of directory in d arg
+ */
+
+
 const cheerio = require('cheerio');
 
+var argv = require('minimist')(process.argv.slice(2));
 var fs = require('fs');
 var path = require('path');
+
+var filename = (typeof argv.f !== 'undefined' && argv.f) ?
+  argv.f.replace(/\//g) : argv.d.replace(/\//g) + '.csv';
 
 // Return a list of files of the specified fileTypes in the provided dir,
 // with the file path relative to the given dir
@@ -25,10 +37,9 @@ function getFilesFromDir(dir, fileTypes) {
 }
 
 //print the txt files in the current directory
-//getFilesFromDir("attendees/", [".html"]).map(console.log);
-getFilesFromDir("attendees/", [".html"]).map(function(file) {
+getFilesFromDir(argv.d, [".html"]).map(function(file) {
 
-  fs.readFile('attendees/' + file, {encoding: 'utf-8'}, function(err, html) {
+  fs.readFile(argv.d + file, {encoding: 'utf-8'}, function(err, html) {
       if (!err) {
 
         const $ = cheerio.load(html);
@@ -46,10 +57,10 @@ getFilesFromDir("attendees/", [".html"]).map(function(file) {
 
         console.log(file, csv);
 
-        fs.appendFile('attendees.csv', csv);
+        fs.appendFile(filename, csv);
       } else {
           console.log(err);
       }
   });
 });
-console.log('attendees.csv');
+console.log('attendees-reprocess.csv');
