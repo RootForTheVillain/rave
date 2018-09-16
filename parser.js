@@ -44,13 +44,12 @@ getFilesFromDir("attendees/", [".html"]).map(function(file) {
         csv += '"' + companyTitle[1] + '"';
         csv +=  "\n";
 
-        console.log(csv);
+        console.log(file, csv);
 
-        /*fs.appendFile('attendees.csv', csv, function() {
-          //console.log(file, csv);
-        });*/
+        fs.appendFile('attendees.csv', csv);
       } else {
           console.log(err);
       }
   });
 });
+console.log('attendees.csv');
