@@ -1,5 +1,6 @@
 /**
- * To run: node csvWriter.js --d [cache/attendees | cache/reprocess] [--f filename]
+ * Parses name, company, title from cached HTML files, writes to CSV
+ * To run: node csvWriter.js --d [cache/attendees | cache/reprocess] [--f filename [attendees.csv]]
  * Arguments: --d [Directory]: Directory to read files from
               --f [Filename]: Name of CSV to output. If not defined, defaults to
                               name of output/directory in d arg
@@ -39,12 +40,13 @@ utils.getFilesFromDir(argv.d, [".html"]).map(function(file) {
         console.log(file, csv);
 
         if (debug == false) {
-          console.log('Writing: ' + filename, csv);
-          fs.appendFile(filename, csv);
+          console.log('Writing: output/' + filename, csv);
+          fs.appendFile('output/' + filename, csv);
         }
       } else {
           console.log(err);
+          utils.errorHandler('Error opeing file: ' + argv.d + file, 'csv');
       }
   });
 });
-console.log('attendees-reprocess.csv');
+console.log(filename);

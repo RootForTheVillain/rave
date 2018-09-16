@@ -21,5 +21,18 @@ module.exports = {
     };
     walkDir(dir);
     return filesToReturn;
+  },
+
+  errorHandler: function(msg, type) {
+  //errorHandler: function(err, dir, id) {
+    switch (type) {
+      case 'caching':
+        fs.appendFile('output/app-errors.csv', msg);
+        break;
+      case 'csv':
+        fs.appendFile('output/csvWriter-errors.csv', msg);
+        break;
+    }
+    console.log('ERROR: ' + msg + "\n");
   }
 };

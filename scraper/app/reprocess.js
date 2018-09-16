@@ -1,4 +1,5 @@
 /**
+ * Reprocesses error files
  * To run: node reprocess.js --f cache/list.html --d cache/attendees/
  * Arguments: --d [Directory]: Directory to write cached files to (e.g., empties/)
               --f [Filename]: List file to process (e.g., cache/list.html, cache/list-short.html)
@@ -12,41 +13,25 @@ var fs = require('fs'),
   path = require('path'),
   argv = require('minimist')(process.argv.slice(2)),
   request = require('request'),
+  utils = require('./utils'),
   errors = 0,
   debug = (argv.debug == 'false') ? false : true;
 
 //print the txt files in the current directory
-getFilesFromDir(argv.d, [".html"]).map(function(file) {
+utils.getFilesFromDir(argv.d, [".html"]).map(function(file) {
 
   var id = file.split('.').shift();
   var url = 'https://theaisummiteventapp7645.webapp-eu.eventscloud.com/attendees/view/'
     + id;
 
-  request(url, {headers: {Cookie: cookie}})
-    .on('error', function(err) {errors++; console.log('ERROR:' + err)})
-    .pipe(fs.createWriteStream('reprocess/' + id + '.html'));
+  if (debug == false) {
+    console.log('Fetching:' + url);
+    request(url, {headers: {Cookie: cookie}})
+      .on('error', function(err) {errors++; console.log('ERROR:' + err)})
+      .pipe(fs.createWriteStream('reprocess/' + id + '.html'));
+    console.log('Caching: ' + argv.d + filename + '.html');
+  }
 
   console.log(file);
 });
 console.log('Reproceessed with ' + errors + ' errors.');
-
-// Return a list of files of the specified fileTypes in the provided dir,
-// with the file path relative to the given dir
-// dir: path of the directory you want to search the files for
-// fileTypes: array of file types you are search files, ex: ['.txt', '.jpg']
-function getFilesFromDir(dir, fileTypes) {
-  var filesToReturn = [];
-  function walkDir(currentPath) {
-    var files = fs.readdirSync(currentPath);
-    for (var i in files) {
-      var curFile = path.join(currentPath, files[i]);
-      if (fs.statSync(curFile).isFile() && fileTypes.indexOf(path.extname(curFile)) != -1) {
-        filesToReturn.push(curFile.replace(dir, ''));
-      } else if (fs.statSync(curFile).isDirectory()) {
-       walkDir(curFile);
-      }
-    }
-  };
-  walkDir(dir);
-  return filesToReturn;
-}

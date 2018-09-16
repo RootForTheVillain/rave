@@ -1,4 +1,5 @@
 /**
+ * Parses URLs from list file, caches HTML pages
  * To run: node app.js --f cache/list.html --d cache/attendees/
  * Arguments: --d [Directory]: Directory to write cached files to (e.g., attendees/)
               --f [Filename]: List file to process (e.g., cache/list.html, cache/list-short.html)
@@ -12,6 +13,7 @@ var argv = require('minimist')(process.argv.slice(2)),
   request = require('request'),
   errors = 0,
   debug = (argv.debug == 'false') ? false : true,
+  utils = require('./utils'),
   list = argv.f;
 
   console.log('Procesing ' + list + '.');
@@ -24,6 +26,7 @@ var fs = require('fs'),
     filePath = path.join(__dirname, list);
 
 fs.readFile(filePath, {encoding: 'utf-8'}, function(err, html) {
+    err = 'foobar';
     if (!err) {
 
         const $ = cheerio.load(html);
@@ -35,30 +38,21 @@ fs.readFile(filePath, {encoding: 'utf-8'}, function(err, html) {
             if (debug == false) {
               console.log('Fetching:' + href);
               request(href, {headers: {Cookie: cookie}})
-                .on('error', function(err) {errorHandler(err, filename)})
+                .on('error', function(err) {handleError('Request failed on URL: ' + href + "\n" + err)})
                 .pipe(fs.createWriteStream(argv.d + filename + '.html'));
             }
 
             console.log('Caching: ' + argv.d + filename + '.html');
         });
     } else {
-        errorHandler(err);
+        utils.errorHandler(err, 'caching');
     }
 });
 console.log(errors + ' total errors found.');
 if (errors > 0) {
-  console.log('caching-errors.csv');
+  console.log('output/caching-errors.csv');
 }
 
-function errorHandler(err, id) {
-  errors++;
-  var msg = '[' + errors + ']' + "\n";
-  if (id !== 'undefined') {
-    msg += argv.d + id + ".html\n";
-  }
-  msg += err + "\n";
-  msg += "----------------------------------------------------------------\n";
-  msg += "----------------------------------------------------------------\n";
-  fs.appendFile('caching-errors.csv', msg);
-  console.log(msg);
+function handleError(msg) {
+  utils.errorHandler(msg, 'caching');
 }
