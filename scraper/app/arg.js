@@ -1,2 +1,3 @@
 var argv = require('minimist')(process.argv.slice(2));
-console.dir(argv.d);
+if (argv.external == true)
+console.dir(argv.external);
