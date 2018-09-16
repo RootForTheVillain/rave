@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en"
+	> <head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" /><script type="text/javascript">window.NREUM||(NREUM={}),__nr_require=function(e,t,n){function r(n){if(!t[n]){var o=t[n]={exports:{}};e[n][0].call(o.exports,function(t){var o=e[n][1][t];return r(o||t)},o,o.exports)}return t[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({1:[function(e,t,n){function r(){}function o(e,t,n){return function(){return i(e,[f.now()].concat(u(arguments)),t?null:this,n),t?void 0:this}}var i=e("handle"),a=e(2),u=e(3),c=e("ee").get("tracer"),f=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],d="api-",l=d+"ixn-";a(p,function(e,t){s[t]=o(d+t,!0,"api")}),s.addPageAction=o(d+"addPageAction",!0),s.setCurrentRouteName=o(d+"routeName",!0),t.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,t){var n={},r=this,o="function"==typeof t;return i(l+"tracer",[f.now(),e,n],r),function(){if(c.emit((o?"":"no-")+"fn-start",[f.now(),r,o],n),o)try{return t.apply(this,arguments)}catch(e){throw c.emit("fn-err",[arguments,this,e],n),e}finally{c.emit("fn-end",[f.now()],n)}}}};a("setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,t){m[t]=o(l+t)}),newrelic.noticeError=function(e){"string"==typeof e&&(e=new Error(e)),i("err",[e,f.now()])}},{}],2:[function(e,t,n){function r(e,t){var n=[],r="",i=0;for(r in e)o.call(e,r)&&(n[i]=t(r,e[r]),i+=1);return n}var o=Object.prototype.hasOwnProperty;t.exports=r},{}],3:[function(e,t,n){function r(e,t,n){t||(t=0),"undefined"==typeof n&&(n=e?e.length:0);for(var r=-1,o=n-t||0,i=Array(o<0?0:o);++r<o;)i[r]=e[t+r];return i}t.exports=r},{}],4:[function(e,t,n){t.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,t,n){function r(){}function o(e){function t(e){return e&&e instanceof r?e:e?c(e,u,i):i()}function n(n,r,o,i){if(!d.aborted||i){e&&e(n,r,o);for(var a=t(o),u=m(n),c=u.length,f=0;f<c;f++)u[f].apply(a,r);var p=s[y[n]];return p&&p.push([b,n,r,a]),a}}function l(e,t){v[e]=m(e).concat(t)}function m(e){return v[e]||[]}function w(e){return p[e]=p[e]||o(n)}function g(e,t){f(e,function(e,n){t=t||"feature",y[n]=t,t in s||(s[t]=[])})}var v={},y={},b={on:l,emit:n,get:w,listeners:m,context:t,buffer:g,abort:a,aborted:!1};return b}function i(){return new r}function a(){(s.api||s.feature)&&(d.aborted=!0,s=d.backlog={})}var u="nr@context",c=e("gos"),f=e(2),s={},p={},d=t.exports=o();d.backlog=s},{}],gos:[function(e,t,n){function r(e,t,n){if(o.call(e,t))return e[t];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,t,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return e[t]=r,r}var o=Object.prototype.hasOwnProperty;t.exports=r},{}],handle:[function(e,t,n){function r(e,t,n,r){o.buffer([e],r),o.emit(e,t,n)}var o=e("ee").get("handle");t.exports=r,r.ee=o},{}],id:[function(e,t,n){function r(e){var t=typeof e;return!e||"object"!==t&&"function"!==t?-1:e===window?0:a(e,i,function(){return o++})}var o=1,i="nr@id",a=e("gos");t.exports=r},{}],loader:[function(e,t,n){function r(){if(!x++){var e=h.info=NREUM.info,t=d.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&t))return s.abort();f(y,function(t,n){e[t]||(e[t]=n)}),c("mark",["onload",a()+h.offset],null,"api");var n=d.createElement("script");n.src="https://"+e.agent,t.parentNode.insertBefore(n,t)}}function o(){"complete"===d.readyState&&i()}function i(){c("mark",["domContent",a()+h.offset],null,"api")}function a(){return E.exists&&performance.now?Math.round(performance.now()):(u=Math.max((new Date).getTime(),u))-h.offset}var u=(new Date).getTime(),c=e("handle"),f=e(2),s=e("ee"),p=window,d=p.document,l="addEventListener",m="attachEvent",w=p.XMLHttpRequest,g=w&&w.prototype;NREUM.o={ST:setTimeout,SI:p.setImmediate,CT:clearTimeout,XHR:w,REQ:p.Request,EV:p.Event,PR:p.Promise,MO:p.MutationObserver};var v=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1071.min.js"},b=w&&g&&g[l]&&!/CriOS/.test(navigator.userAgent),h=t.exports={offset:u,now:a,origin:v,features:{},xhrWrappable:b};e(1),d[l]?(d[l]("DOMContentLoaded",i,!1),p[l]("load",r,!1)):(d[m]("onreadystatechange",o),p[m]("onload",r)),c("mark",["firstbyte",u],null,"api");var x=0,E=e(4)},{}]},{},["loader"]);</script>
+	<meta name="author" content="TapCrowd" />
+    <!-- start Mixpanel --><script type="text/javascript">(function(e,a){if(!a.__SV){var b=window;try{var c,l,i,j=b.location,g=j.hash;c=function(a,b){return(l=a.match(RegExp(b+"=([^&]*)")))?l[1]:null};g&&c(g,"state")&&(i=JSON.parse(decodeURIComponent(c(g,"state"))),"mpeditor"===i.action&&(b.sessionStorage.setItem("_mpcehash",g),history.replaceState(i.desiredHash||"",e.title,j.pathname+j.search)))}catch(m){}var k,h;window.mixpanel=a;a._i=[];a.init=function(b,c,f){function e(b,a){var c=a.split(".");2==c.length&&(b=b[c[0]],a=c[1]);b[a]=function(){b.push([a].concat(Array.prototype.slice.call(arguments,
+            0)))}}var d=a;"undefined"!==typeof f?d=a[f]=[]:f="mixpanel";d.people=d.people||[];d.toString=function(b){var a="mixpanel";"mixpanel"!==f&&(a+="."+f);b||(a+=" (stub)");return a};d.people.toString=function(){return d.toString(1)+".people (stub)"};k="disable time_event track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config reset people.set people.set_once people.increment people.append people.union people.track_charge people.clear_charges people.delete_user".split(" ");
+            for(h=0;h<k.length;h++)e(d,k[h]);a._i.push([b,c,f])};a.__SV=1.2;b=e.createElement("script");b.type="text/javascript";b.async=!0;b.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"file:"===e.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";c=e.getElementsByTagName("script")[0];c.parentNode.insertBefore(b,c)}})(document,window.mixpanel||[]);
+        mixpanel.init("a1ea0d8bb1e4ac1e3332bf5e3f998d56");</script><!-- end Mixpanel -->
+			<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<link href="https://d27xig2qhiey89.cloudfront.net/public_html/themes/responsive/css/bootstrap-combined.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="https://d27xig2qhiey89.cloudfront.net/public_html/themes/responsive/css/style.css" />
+	<link rel="stylesheet" type="text/css" href="https://d27xig2qhiey89.cloudfront.net/public_html/themes/responsive/css/sweetalert.css" />
+	<link rel="stylesheet" type="text/css" href="https://d27xig2qhiey89.cloudfront.net/public_html/themes/responsive/css/responsiveshizzle.css" />
+		<link rel="stylesheet" type="text/css" href="https://theaisummiteventapp7645.webapp-eu.eventscloud.com/css?appid=7645&timestamp=1537058810" />
+		<link rel="stylesheet" type="text/css" href="https://theaisummiteventapp7645.webapp-eu.eventscloud.com/css/event/14295?appid=7645&timestamp=1537058810" />
+		<script type="text/javascript" src="https://d27xig2qhiey89.cloudfront.net/public_html/themes/responsive/js/jquery.min.js"></script>
+		<script type="text/javascript" src="https://d27xig2qhiey89.cloudfront.net/public_html/themes/responsive/js/tcprofile.0.1.js"></script>
+			<script type="text/javascript" src="https://d27xig2qhiey89.cloudfront.net/public_html/themes/responsive/js/TCAnalytics_v3.js"></script>
+		
+	<script type="text/javascript" src="https://d27xig2qhiey89.cloudfront.net/public_html/themes/responsive/js/functions.js"></script>
+    <script type="text/javascript" src="https://d27xig2qhiey89.cloudfront.net/public_html/themes/responsive/js/tc_mixpanelutils.js"></script>
+	<script type="text/javascript" src="https://d27xig2qhiey89.cloudfront.net/public_html/themes/responsive/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="https://d27xig2qhiey89.cloudfront.net/public_html/themes/responsive/js/sweetalert.min.js"></script>
+	<link rel="stylesheet" href="https://d27xig2qhiey89.cloudfront.net/public_html/themes/responsive/css/royalslider.css" type="text/css" />
+	<script type="text/javascript" src="https://d27xig2qhiey89.cloudfront.net/public_html/themes/responsive/js/popup.js"></script>
+	<link rel="stylesheet" href="https://d27xig2qhiey89.cloudfront.net/public_html/themes/responsive/css/popup.css" type="text/css" />
+	<script src="https://d27xig2qhiey89.cloudfront.net/public_html/themes/responsive/js/jquery.knob.js"></script>
+	<script src="https://d27xig2qhiey89.cloudfront.net/public_html/themes/responsive/js/jquery.throttle.js"></script>
+	<link href="https://d27xig2qhiey89.cloudfront.net/public_html/themes/responsive/css/jquery.classycountdown.min.css" rel="stylesheet">
+	<script src="https://d27xig2qhiey89.cloudfront.net/public_html/themes/responsive/js/jquery.classycountdown.min.js"></script>
+	<link rel="stylesheet" href="https://d27xig2qhiey89.cloudfront.net/public_html/themes/responsive/css/royalslider.css" type="text/css" />
+	<link rel="stylesheet" href="https://d27xig2qhiey89.cloudfront.net/public_html/themes/responsive/css/royalslider-skins/default/default.css" type="text/css" />
+	<link rel="stylesheet" href="https://d27xig2qhiey89.cloudfront.net/public_html/themes/responsive/css/touchcarousel.css" type="text/css" />
+	<link rel="stylesheet" href="https://d27xig2qhiey89.cloudfront.net/public_html/themes/responsive/css/royalslider-skins/iskin/iskin.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="//staticcdn.eventscloud.com/libs/css/cookieconsent2/3.0.3/cookieconsent.min.css" />
+    <script src="//staticcdn.eventscloud.com/libs/js/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
+	<style>
+		#content {
+			top: 70px;
+		}
+
+		.navbartitle.hidden-phone img {
+			max-height: 80px;
+			padding: 0;
+		}
+
+		#actionsleft, #actions {
+			height: 50px;
+		}
+
+		#actionsleft a, #actions a {
+			padding: 0;
+			margin: 0;
+		}
+
+        #actionsleft svg {
+            height: 32px;
+            width: 32px;
+            vertical-align: middle;
+        }
+
+		body #header, #actionsbot {
+			line-height: 40px;
+		}
+
+		#actionsbot, #actionsTop {
+			display: none;
+			width: 100%;
+		}
+        #actionsTop {
+            top: 0;
+            height: 40px;
+            background-color: lightgray;
+        }
+		#actionsbot span {
+			width: 90%;
+		}
+		#actionsbot a {
+			display: inline-table !important;
+            margin-left: 20px;
+		}
+
+		#header a, #actionsbot a
+		{
+			text-decoration: none;
+		}
+
+        .cc-floating .cc-message {
+            color: rgb(255, 255, 255) !important;
+        }
+
+        .webview-outlink *{
+            pointer-events: none;
+        }
+	</style>
+	<!-- ONLOAD JAVASCRIPT -->
+	<script type="text/javascript">
+	var countActionsLeft = 0;
+	var countActions = 0;
+
+		window.onload = init;
+
+		function init() {
+			
+			$("#content").height($(document).height() - 70);
+			//$("#mastersearch").toggle();
+
+	    		    	//var exhibitors = new Array();
+	    		    		    	//var sessions = new Array();
+	    		    		    	//var subfloorplans = new Array();
+	    	
+	    	/* $("#txtmastersearch").keyup(function(event) {
+	    		$('#searchresults').html('');
+	    		var s = $("#txtmastersearch").val().toLowerCase();
+
+	    		//MAP FILTERING
+	    		for (var i = exhibitors.length - 1; i >= 0; i--) {
+	    			var t = $('.marker.exhibitor.'+exhibitors[i].id);
+	    			if(exhibitors[i].name.toLowerCase().indexOf(s) > -1) {
+						if(t != null) t.show();
+	    			} else {
+	    				if(t != null) t.hide();
+	    			}
+	    		};
+	    		for (var i = sessions.length - 1; i >= 0; i--) {
+	    			var t = $('.marker.sessions.'+sessions[i].id);
+	    			if(sessions[i].name.toLowerCase().indexOf(s) > -1) {
+						if(t != null) t.show();
+	    			} else {
+	    				if(t != null) t.hide();
+	    			}
+	    		};
+	    		for (var i = subfloorplans.length - 1; i >= 0; i--) {
+	    			var t = $('.marker.exhibitor.'+subfloorplans[i].id);
+	    			if(subfloorplans[i].name.toLowerCase().indexOf(s) > -1) {
+						if(t != null) t.show();
+	    			} else {
+	    				if(t != null) t.hide();
+	    			}
+	    		};
+			});*/
+
+	    	//addJSAction('<? /*buildUri('images/icons/white/search.png')*/ ?>', function() {
+	    		//$("#mastersearch").toggle();
+	    	//});
+		}
+	</script>
+	<!-- ACTIONS SCRIPT -->
+	<script type="text/javascript">
+		function addAction(icon, url, id) {
+
+			if(id != undefined && $('#'+id).length > 0){
+			    return;
+            }
+
+            countActions++;
+			$('#actions').prepend('<a id="' + id + '" style="display:inline-block; width: 32px;" href="'+url+'"><img style="cursor: pointer;" src="'+icon+'" /></a>');
+
+			var width = (countActions > countActionsLeft) ? countActions * 32 : countActionsLeft * 32;
+			$('#actions').css("width", width);
+			$('#actionsleft').css("width", width);
+		}
+
+		function addActionText(text, url, id) {
+
+            if(id != undefined && $('#'+id).length > 0){
+                return;
+            }
+
+			countActions++;
+
+			$('#actions').prepend('<a id="' + id + '" style="display:inline-block; width: 32px;padding-top:5px;font-weight:bold;" href="'+url+'">'+text+'</a>');
+
+			var width = (countActions > countActionsLeft) ? countActions * 32 : countActionsLeft * 32;
+			$('#actions').css("width", width);
+			$('#actionsleft').css("width", width);
+		}
+
+		function addActionTextBot(text, url, id) {
+			$('#actionsbot').css("display", "inline-block");
+			$('#actionsbot > span').append('<a id="' + id + '" style="display:inline-block;font-weight:bold;" href="'+url+'">'+text+'</a>');
+		}
+
+        function addActionTop(html) {
+            $('#actionsTop > ul').append(html);
+        }
+
+		function addSvgAction(key, url) {
+			countActions++;
+
+			$('#actions').prepend('<a style="display:inline-block; width: 32px;" href="'+url+'"><div class="'+ key +'"></div></a>');
+
+			var width = (countActions > countActionsLeft) ? countActions * 32 : countActionsLeft * 32;
+			$('#actions').css("width", width);
+			$('#actionsleft').css("width", width);
+		}
+
+		function addJSActionLeft(icon, f, id) {
+
+            if(id != undefined && $('#'+id).length > 0){
+                return;
+            }
+
+			var img = $('<img>');
+            img.attr('id', id);
+			img.attr('src', icon);
+			img.click(f);
+			img.css("cursor", "pointer");
+			$('#actionsleft').append(img);
+			
+			countActionsLeft++;
+			var width = (countActions > countActionsLeft) ? countActions * 32 : countActionsLeft * 32;
+			$('#actions').css("width", width);
+			$('#actionsleft').css("width", width);
+		}
+
+		function addJSAction(icon, f, id) {
+
+            if(id != undefined && $('#'+id).length > 0){
+                return;
+            }
+
+			var img = $('<img>');
+            img.attr('id', id);
+			img.attr('src', icon);
+			img.click(f);
+			img.css("cursor", "pointer");
+			$('#actions').prepend(img);
+			
+			countActions++;
+			var width = (countActions > countActionsLeft) ? countActions * 32 : countActionsLeft * 32;
+			$('#actions').css("width", width);
+			$('#actionsleft').css("width", width);
+		}
+
+		function addJSActionText(text, f, id) {
+
+            if(id != undefined && $('#'+id).length > 0){
+                return;
+            }
+
+			countActions++;
+
+			var a = $('<a id="'+id+'" '+(text == '‹' ? 'class="text_back_button"' : '')+'style="cursor: pointer; display:inline-block; width: 32px;padding-top:5px;font-weight:bold;">'+text+'</a>');
+			a.click(f);
+			$('#actions').prepend(a);
+
+			var width = (countActions > countActionsLeft) ? countActions * 32 : countActionsLeft * 32;
+			$('#actions').css("width", width);
+			$('#actionsleft').css("width", width);
+		}
+
+		//Code Jonas VW: wordt gebruikt in places (moet vervangen worden gaarne)
+		function addJSActionButton2(icon, text, f, id) {
+
+            if(id != undefined && $('#'+id).length > 0){
+                return;
+            }
+
+			var img = $('<img>');
+            img.attr('id', id);
+			img.attr('src', icon);
+			img.click(f);
+			img.css("cursor", "pointer");
+			img.css("padding-top", "0");
+			//$('#actions').prepend("<div class='hidden-phone' style='display: inline-block; padding-left: 5px;'>"+text+"</div>");
+			$('#actions').prepend(img);
+			$("#actionsleft").css("width", "auto");
+			$("#actions").css("width", "auto");
+			var w1 = $('#actionsleft').width();
+			var w2 = $('#actions').width();
+			if(w2 < w1) $('#actions').css("width", $('#actionsleft').width());
+			if(w1 < w2) $('#actionsleft').css("width", $('#actions').width());
+		}
+
+		function addActionLeft(icon, url, id) {
+
+            if(id != undefined && $('#'+id).length > 0){
+                return;
+            }
+
+			$('#actionsleft').append('<a id="'+id+'" href="'+url+'"><img src="'+icon+'" /></a>');
+			countActionsLeft++;
+			var width = (countActions > countActionsLeft) ? countActions * 32 : countActionsLeft * 32;
+			$('#actions').css("width", width);
+			$('#actionsleft').css("width", width);
+		}
+
+		function addJSActionTextLeft(text, f, id) {
+
+            if(id != undefined && $('#'+id).length > 0){
+                return;
+            }
+
+			var a = $('<a id="'+id+'" '+(text == '‹' ? 'class="text_back_button"' : '')+'style="cursor: pointer; display:inline-block; width: 32px;padding-top:5px;font-weight:bold;">'+text+'</a>');
+			a.click(f);
+			$('#actionsleft').append(a);
+
+			countActionsLeft++;
+
+			var width = (countActions > countActionsLeft) ? countActions * 32 : countActionsLeft * 32;
+			$('#actions').css("width", width);
+			$('#actionsleft').css("width", width);
+		}
+
+        function addJSActionButton(html, action, id) {
+
+            if(id != undefined && $('#'+id).length > 0){
+                return;
+            }
+
+			var a = $(html);
+            a.attr('id', id);
+            a.click(action);
+			$('#actions').prepend(a);
+			countActions++;
+			var width = (countActions > countActionsLeft) ? countActions * 32 : countActionsLeft * 32;			
+			$('#actions').css("width", width);
+			$('#actionsleft').css("width", width);
+        }
+
+		function showSettings() {
+			addSvgAction('icon_settings', 'https://theaisummiteventapp7645.webapp-eu.eventscloud.com/settingsv2');
+		}
+	</script>
+	<script type="text/javascript">
+                        var _tca = _tca || [];
+			_tca.subdomain = "theaisummiteventapp7645.webapp-eu.eventscloud.com";
+			_tca.bundle = "com.tapcrowd.theaisummiteventapp7645";
+			_tca.eventid = "0";
+			_tca.venueid = "0";
+			_tca.apikey = "APIKEY";
+			_tca.apptypeid = "3";
+									_tca.appid = "7645";
+    </script>
+        <script type="text/javascript" src="https://d27xig2qhiey89.cloudfront.net/public_html/themes/responsive/js/jquery.dotdotdot-1.5.6-packed.js"></script>
+        <!--<script type="text/javascript" src="https://d27xig2qhiey89.cloudfront.net/public_html/themes/responsive/js/jquery.touchcarousel-1.1.min.js"></script>
+    <script type="text/javascript" src="https://d27xig2qhiey89.cloudfront.net/public_html/themes/responsive/js/royal-slider-8.1.min.js"></script>-->
+
+    	
+	<!-- add favorites js -->
+	<!--<script type="text/javascript" scr="https://d27xig2qhiey89.cloudfront.net/public_html/themes/responsive/js/favorites.js"></script>-->
+
+	<script type="text/javascript">
+
+		// Add Session to localStorage ($session)
+		function SaveSessionToLocalStorage(data)
+		{
+			// The speaker in data tag
+			var speakertext = $("#session").attr("data");
+			var speakertext_decoded = urldecode(speakertext);
+            MixpanelUtils.track('addpersprog');
+			// If session is not set, set array
+			if(localStorage.getItem('session') == null) localStorage.setItem('session', '{}');
+
+			var a = {};
+			var parallel_session = false;
+    		// Parse the serialized data back into an aray of objects
+    		a = JSON.parse(localStorage.getItem('session'));
+
+    		var allow_adding_session = true;
+    		var parallel_session = false;
+
+    		if(data.allowparallel == 0) {
+    			for (var property in a) {
+    				var saved_session = a[property];
+    				if(data.starttime == saved_session.starttime && data.endtime == saved_session.endtime) {
+    					allow_adding_session = false;
+    					parallel_session = saved_session;
+    				}
+    			};
+    		}
+
+    		if(allow_adding_session == true) {
+	    		// Speaker = decoded speaker from data tag
+	    		data.speaker = speakertext_decoded;
+	    		// Push the new data (whether it be an object or anything else) onto the array
+	    		if(a[data.id] == null) a[data.id] = data;
+
+	    		$.post("https://theaisummiteventapp7645.webapp-eu.eventscloud.com/favorites/add", { object: "session", objectid: data.id, eventid: data.eventid }).done(function(resp) {
+	    			// Re-serialize the array back into a string and store it in localStorage
+		    		localStorage.setItem('session', JSON.stringify(a));
+		    		log('/App/7645/favorites/Sessions/'+data.id+'/add', '', '');
+
+                    resp = jQuery.parseJSON(resp);
+                    if(resp.status == 400 && resp.error == 'Could not add registration. Session is full.'){
+                        swal({
+                            title: 'Error',
+                            text: resp.error,
+                            type: "error"
+                        }, function(){
+							// Reload the page
+							location.reload();
+						});
+                    } else {
+                        location.reload();
+                    }
+	    		});
+	    	} else {
+	    		if(parallel_session != false && parallel_session.mandatory != undefined && parallel_session.mandatory == 1) {
+	    			swal({
+	    				title: 'Error',
+						text: 'You already have a mandatory session scheduled at that time.',
+						type: "error"
+	    			});
+	    		} else {
+		    		swal({
+						title: 'Warning',
+						text: 'You already have a session scheduled at that time. Do you want to delete your previous session?',
+						type: "warning",
+						showCancelButton: true,
+						confirmButtonColor: "#DD6B55",
+						confirmButtonText: 'Yes',
+						cancelButtonText: 'No',
+						closeOnConfirm: false,
+						showLoaderOnConfirm: true,
+						closeOnCancel: true 
+		    		}, function(isConfirm){
+		    		   	if (isConfirm) {
+		    		   		//Yes is clicked
+				    		// Speaker = decoded speaker from data tag
+				    		data.speaker = speakertext_decoded;
+				    		// Push the new data (whether it be an object or anything else) onto the array
+				    		if(a[data.id] == null) a[data.id] = data;
+				    		//Remove parallel session
+				    		if(parallel_session != false) {
+				    			$.post("https://theaisummiteventapp7645.webapp-eu.eventscloud.com/favorites/remove", { object: "session", objectid: parallel_session.id, eventid: parallel_session.eventid }).done(function(resp) {
+				    				delete a[parallel_session.id];
+			        				localStorage.setItem('session', JSON.stringify(a));
+				    			});	
+				    		}
+				    		//Add this session
+				    		$.post("https://theaisummiteventapp7645.webapp-eu.eventscloud.com/favorites/add", { object: "session", objectid: data.id, eventid: data.eventid }).done(function(resp) {
+				    			// Re-serialize the array back into a string and store it in localStorage
+					    		localStorage.setItem('session', JSON.stringify(a));
+					    		log('/App/7645/favorites/Sessions/'+data.id+'/add', '', '');
+					    		// Reload the page
+					    		location.reload();
+				    		});
+		    			}
+		    		});
+				}
+	    	}
+		}
+
+		// Delete Session from localStorage
+		function DeleteSessionFromLocalStorage(data)
+		{
+			var doReload = (typeof reload === 'undefined') ? true : reload;
+			// Id from the session
+			var id_session = data;
+            MixpanelUtils.track('removepersprog');
+
+    		// Get sessions from localStorage
+    		var json = JSON.parse(localStorage.getItem('session'));
+
+    		// Check if id in object = id given from the session
+        	for(obj in json) {
+            	if(json[obj].id == id_session)
+            	{
+					var delObjTmp = obj;
+					
+            		$.post("https://theaisummiteventapp7645.webapp-eu.eventscloud.com/favorites/remove", { object: "session", objectid: id_session, eventid: json[obj].eventid }).done(function (resp) {
+            			//delete json[obj];
+						delete json[delObjTmp];
+						
+            			// set localstorage with the modifed data
+        				localStorage.setItem('session', JSON.stringify(json));
+            			location.reload();
+            		});
+            	}
+        	}
+		}
+
+		// Decode URL
+		function urldecode (str) {
+		  return decodeURIComponent((str + '').replace(/\+/g, '%20'));
+		}
+
+		if( getCookie('lang') == null ) {
+			var verloopt = new Date();
+			// tel hier een maand bij op
+			verloopt.setMonth(verloopt.getMonth() + 1);
+						document.cookie = "lang=;expires="+verloopt+";path=/";
+		}
+
+		function Set_Cookie(value)
+		{
+			// maak een datum aan
+			var verloopt = new Date();
+			// tel hier een maand bij op
+			verloopt.setMonth(verloopt.getMonth() + 1);
+			document.cookie = "lang="+value+";expires="+verloopt+";path=/";
+		}
+
+        function setCookie(key, value)
+        {
+            // maak een datum aan
+            var verloopt = new Date();
+            // tel hier een maand bij op
+            verloopt.setMonth(verloopt.getMonth() + 1);
+            document.cookie = key+"="+value+";expires="+verloopt+";path=/";
+        }
+
+		function getCookie(c_name)
+		{
+			var i,x,y,ARRcookies=document.cookie.split(";");
+			for (i=0;i<ARRcookies.length;i++)
+			{
+			  x=ARRcookies[i].substr(0,ARRcookies[i].indexOf("="));
+			  y=ARRcookies[i].substr(ARRcookies[i].indexOf("=")+1);
+			  x=x.replace(/^\s+|\s+$/g,"");
+			  if (x==c_name)
+			    {
+			    return unescape(y);
+			    }
+			}
+		}
+	</script>
+	<title>
+		Mobile website theaisummiteventapp7645	</title>
+</head>
+<body class="page-event-info page--event" >
+<div id="tapwrap" style="bottom: 0;top: 0;position: absolute;" class="attendees_view">
+		<div id="header" class="repeat" style="text-align: center;">
+		<span id="actionsleft">		
+			                                    <a id="gobackButton" class="icon_arrow_left" href="/event/index/14295" onclick="goPreviousScreen(); return false;"></a>
+                            		</span>
+											<a href="https://theaisummiteventapp7645.webapp-eu.eventscloud.com/home/app" class="headerAppName"><p class="navigationColor-color">Detail</p></a>
+								<span id="actions"></span>
+	</div>
+    <div id="actionsTop"><ul></ul></div>
+		    <div id="content_wrapper" class="">
+    	<div id="mastersearch" class="container hide">
+    		<input type="text" id="txtmastersearch" />
+    		<div id="searchresults">
+    		</div>
+    	</div>
+		<div  id="content" >
+		<!--fullscreen ads-->
+			<!-- page content -->
+		<link rel="stylesheet" href="https://d27xig2qhiey89.cloudfront.net/public_html/themes/responsive/css/detail.css" type="text/css" media="screen" />
+<script type="text/javascript" src="//maps.googleapis.com/maps/api/js?key=AIzaSyBCeqS1Ln_lwZA8ZavvIi5qNQPTNjwcmt8"></script>
+
+
+<div class="container">
+	<div class="row">
+		<div class="span4">
+<p class="metadataTitle titleFontColor metacell">
+						<span style="display: inline-block" class="">Danny Hua</span>
+						<span style="table-row"><span class="ellipsis subtitle">Futurewei Technologies<br>Director</span><span class="ellipsis subtitle right"></span></span><span style="table-row"></span></p><a href="https://theaisummiteventapp7645.webapp-eu.eventscloud.com/messaging/createoneononeconversation/2068725" class="metacell url"><img src="https://d27xig2qhiey89.cloudfront.net/public_html/themes/responsive/images/icons/comment.png" style="width: 16px;" width="16" /><span>Send a message</span></a><a href="https://theaisummiteventapp7645.webapp-eu.eventscloud.com/favorites/addmeetingrequest/14295?attendee=1941136" class="metacell url"><img src="https://d27xig2qhiey89.cloudfront.net/public_html/themes/responsive/images/icons/favorite.png" style="width: 16px;" width="16" /><span>Create a meeting</span></a><a href='https://theaisummiteventapp7645.webapp-eu.eventscloud.com/confbag/add/attendees/1941136/14295/0'  id='confbagbutton' style='cursor:pointer;' class='metacell add'>
+					<img src='https://d27xig2qhiey89.cloudfront.net/public_html/themes/responsive/images/icons/confbag.png' width='16' />
+						<span class='text'>Add -> Conference Bag</span>
+						</a>					</div>
+	</div>
+	</div>
+<link rel="stylesheet" href="https://d27xig2qhiey89.cloudfront.net/public_html/themes/responsive/css/activity.css">
+<script type="text/javascript">
+// Layout for registration button
+var headercolor = $('.metadataTitle').css('backgroundColor');
+$('#register').css('color', headercolor);
+
+// URL
+var url = window.location.pathname;
+// ID OF THE SESSION
+var value = url.substring(url.lastIndexOf('/') + 1);
+
+var url2 = document.location.hostname;
+
+// get sessions from localstorage
+var json = JSON.parse(localStorage.getItem('session'));
+
+// get exhibitors from localstorage
+var json2 = JSON.parse(localStorage.getItem('exhibitor'));
+
+// IF OBJECT WITH ID = VALUE -> CHANGE TEXT TO "REMOVE FROM FAVORITES", ONCLICK TO ... , IMG TO
+for(obj in json) {
+    if(json[obj].id == value)
+    {
+    	    		$('#favbutton .text').html('Remove -> Favorites');
+			$("#favbutton, #register").attr("onclick","DeleteSessionFromLocalStorage("+ value + ")");
+			$("#favbutton img").attr("src", "http://" + url2 + "/public_html/themes/responsive/images/icons/nfavorite.png");
+		    }
+}
+for(obj in json2) {
+    if(json2[obj] != null && json2[obj].id == value)
+    {
+    		    	$('#favbutton .text').html('Remove -> Favorites');
+			$("#favbutton").attr("onclick","DeleteExhibitorFromLocalStorage("+ value + ")");
+			$("#favbutton img").attr("src", "http://" + url2 + "/public_html/themes/responsive/images/icons/nfavorite.png");
+		    }
+}
+</script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        MixpanelUtils.setEntity({"entity":"attendee","entityid":"1941136","eventid":"14295"});
+        MixpanelUtils.trackLinks('a[href^="tel"]', 'call');
+        MixpanelUtils.trackLinks('a[href^="mailto"]', 'mail');
+        MixpanelUtils.trackLinks('a[href*="facebook"]', 'facebook');
+        MixpanelUtils.trackLinks('a[href*="linkedin"]', 'linkedin');
+        MixpanelUtils.trackLinks('a[href*="twitter"]', 'twitter');
+        MixpanelUtils.trackLinks('#confbagbutton.add', 'addconfbag');
+        MixpanelUtils.trackLinks('#confbagbutton.remove', 'removeconfbag');
+        MixpanelUtils.trackLinks('a.website', 'website');
+        MixpanelUtils.trackLinks('a.meetingrequest', 'meetingrequest');
+        MixpanelUtils.trackLinks('a.sendmessage', 'sendmessage');
+        MixpanelUtils.trackLinks('a.attachment', 'opendocument');
+        MixpanelUtils.trackLinks('img#detail_image', 'detail_image');
+        MixpanelUtils.trackLinks('a[href*="/notes/"]', 'notes');
+        MixpanelUtils.trackLinks('a[href*="exhibitors/categories/"]', 'showcategories');
+        MixpanelUtils.trackLinks('a[href^="https://maps.google.com/maps"]', 'location');
+        MixpanelUtils.trackLinks('a[href*="mapv2/view/"]', 'showonfloorplan');
+        MixpanelUtils.trackLinks('a[href*="confbagfiles/event/"]', 'opendocument');
+        MixpanelUtils.trackLinks('a[href*="rateobject=session"]', 'sessionrating');
+        MixpanelUtils.trackLinks('a[href*="datasource=speaker"]', 'askaquestion');
+        MixpanelUtils.trackLinks('a.url', 'website');
+        MixpanelUtils.trackLinks('a[href*="/confirmed"]', 'acceptmeeting');
+
+        //Sessions
+        MixpanelUtils.trackLinks('a[href*="/speakers/view/"]', 'speakersfromsession');
+        MixpanelUtils.trackLinks('a[href*="/speakerdetails/event/"]', 'speakersfromsession');
+
+        MixpanelUtils.trackLinks('a[href*="/sessions/speaker/"]', 'showsessions');
+
+        bindEventToElement('img.detail_image', 'click', function (e) {
+            MixpanelUtils.track('photos', {'extra' :  $(e.target).attr('src')});
+        });
+
+        if(window.top.location.href.indexOf('/news/view/') > 0){
+            MixpanelUtils.track('readmore', {'extra' :  window.top.location.href});
+        }
+    });
+</script>
+    <!-- end page content -->
+
+	</div>
+	</div> <!--end of content_wrapper div -->
+	<div id="actionsbot"><span></span></div>
+	</div> <!--end of wrap for ads div -->
+        	
+<script type="text/javascript" src="https://d27xig2qhiey89.cloudfront.net/public_html/themes/responsive/js/document_ready.js"></script>
+<script type="text/javascript" src="https://d27xig2qhiey89.cloudfront.net/public_html/themes/responsive/js/image_helpers/svg_images.js"></script>
+<script>
+	$(document).ready(function() {
+		
+        $('.ad-link').on('click', function () {
+            log($(this).data('path')+'/click');
+        });
+		doLog("%2FTheAISummitSanFrancisco%2FAttendees%2FHuaDanny");
+
+		var carouselitems = $('li.touchcarousel-item');
+		if(carouselitems != null) carouselitems.addClass('custom-touchcarousel-item');
+		var royaldefault = $('.royalSlider.default');
+        if(royaldefault != null) {
+        	var sliderHeight = royaldefault.css('height');
+        	if(sliderHeight != null) sliderHeight = sliderHeight.replace(/[^-\d\.]/g, '');
+        }
+        var customitems = $('.custom-touchcarousel-item');
+        if(customitems != null) {
+        	var sliderWidth = customitems.css('width');
+        	if(sliderWidth != null) sliderWidth = sliderWidth.replace(/[^-\d\.]/g, '');
+        }
+        var itemimages = $('.itemImage');
+        if(itemimages != null) {
+        	$('.itemImage').attr("height",sliderHeight);
+        }
+        var screenWidth = screen.width;
+
+	});
+	</script>
+	    <div id="loginModal" class="modal fade in hide">
+	        <div class="modal-body">
+	            <div class="formmodule">
+                    <div class="alert alert-danger hidden error-msg" role="alert">Login or password is incorrect</div>
+                        <label for="username">Login:</label>
+	                        <input type="text" class="textfield-color" name="username" style="width:90%"/>
+	                    </p>
+	                        <label for="password">Password:</label>
+	                        <input type="password" class="textfield-color" name="password" style="width:90%"/>
+	                    </p>
+	                <p>
+	                    <button class="button-color" type="button">Submit</button>
+	                </p>
+	            </div>
+	        </div>
+	    </div>
+
+	<script type="text/javascript">
+		var isLoggedIn = true;
+        var isMixPanelEnabled = 1 ;
+        var isStayloggedinOff = 0 ;
+        var _globalApiInfo =  {"API_BASE_URL":"https:\/\/api-eu.eventscloud.com\/api\/gateway\/call\/1.5\/","appid":"7645","registrantid":"2056274","eventid":"14295","userid":"1680210","currenttimestamp":1537063348,"login":"Steven.Wesoloski6294","hash":"da6f1046d5ad06180aa736f0ee0822e3"};
+        redrawIcons();
+        $(document).ready(function() {
+            initCookieConsent();
+            initLoginPopup();
+            if (isStayloggedinOff == 1) {
+                checkStayLoggedin();
+            }
+        });
+        function goPreviousScreen(){
+            var previousUrl = window.top.location.href;
+            if(history.length == 1){
+                if(document.getElementById('gobackButton') != undefined)
+                    window.location = document.getElementById('gobackButton').href;
+            }else{
+                history.go(-1);
+                setTimeout(function(){
+                    if(previousUrl == window.top.location.href){
+                        if(document.getElementById('gobackButton') != undefined)
+                            window.location = document.getElementById('gobackButton').href;
+                    }
+                }, 800)
+            }
+        }
+	</script>
+
+            <script type="text/javascript">
+            $(document).ready(function() {
+                var mixpanel_user = getLocalStorage('mixpanel_user', 'notset');
+                var tc_cred_login = '';
+
+                if(mixpanel_user == 'notset' || (mixpanel_user != 'notset' && mixpanel_user != tc_cred_login)) {
+
+                    setLocalStorage('mixpanel_user', "Steven.Wesoloski6294");
+                    MixpanelUtils.registerSuperProps({"eventid":"14295","language":"en"});
+
+                                        MixpanelUtils.peopleSet({"login":"Steven.Wesoloski6294","email":"swesoloski@rave.com","userid":"1680210","registrantid":"2056274","registrantexternalid":"tapcrowd_2056274","name":"Steven Wesoloski"});
+                    
+                                        MixpanelUtils.setIdentity(Steven.Wesoloski6294);
+                                    }
+                MixpanelUtils.setEntity({"entity":"attendee","entityid":"1941136","eventid":"14295"});
+                MixpanelUtils.track('pageview');
+                MixpanelUtils.trackLinks('#ads .ad-link', 'adclick');
+
+                bindEventToElement('.webview-outlink', 'click', function (e) {
+                    MixpanelUtils.setEntity({'entity': '{', 'entity': 'launcher', 'entityid' : $(e.target).data('launcherid')}, $(e.target).attr('href'));
+                    MixpanelUtils.track('pageview');
+                    MixpanelUtils.setEntity({"entity":"attendee","entityid":"1941136","eventid":"14295"});
+                });
+            });
+        </script>
+    <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"4d875d840e","applicationID":"74891179","transactionName":"NVUAYhdQC0RWV0ZcDAwfI1URWApZGHVGQQYMVAdTFh4TXlJD","queueTime":0,"applicationTime":7009,"atts":"GRIDFF9KGEo=","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
