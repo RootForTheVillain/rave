@@ -3,6 +3,7 @@
  * Arguments: --d [Directory]: Directory to read files from
               --f [Filename]: Name of CSV to output. If not defined, defaults to
                               name of directory in d arg
+              --debug [Debug]: Defaults to true. Setting to false makes external HTTP requests
  */
 
 
@@ -10,7 +11,8 @@ const cheerio = require('cheerio');
 
 var argv = require('minimist')(process.argv.slice(2));
 var fs = require('fs');
-var path = require('path');
+var path = require('path'),
+  debug = (argv.debug == 'false') ? false : true;
 
 var filename = (typeof argv.f !== 'undefined' && argv.f) ?
   argv.f.replace(/\//g) : argv.d.replace(/\//g) + '.csv';
