@@ -26,7 +26,6 @@ var fs = require('fs'),
     filePath = path.join(__dirname, list);
 
 fs.readFile(filePath, {encoding: 'utf-8'}, function(err, html) {
-    err = 'foobar';
     if (!err) {
 
         const $ = cheerio.load(html);
